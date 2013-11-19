@@ -13,10 +13,7 @@ package body Basic_Event.Partial is
     end Create;
 
     procedure Simulate (E: in Partial_Event) is 
-		S: String (1..32);
     begin
-		Put_Line ("TEST PARTIAL STRING");
-		S := ("Partial message: ID " & Integer'Image(E.ID) & ": " & Actions'Image(E.A));
 		Printer.Print (E.ID, E.A);
 		exception
 			when Error: others =>

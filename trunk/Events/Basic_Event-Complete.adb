@@ -15,11 +15,7 @@ package body Basic_Event.Complete is
     end Create;
 	    
 	procedure Simulate(E: in Complete_Event) is 
-		S: String (1..40);
     begin
-		Put_Line ("COMPLETE");
-		S := ("Complete message: ID " & Integer'Image(E.ID) & ": Row "  
-                    & Integer'Image(E.Row) & " - Col " & Integer'Image(E.Col));
 		Printer.Print (E.ID, E.Row, E.Col);
 		exception
 			when Error: others =>

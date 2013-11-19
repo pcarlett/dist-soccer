@@ -7,7 +7,7 @@ package Printer is
 	
 	pragma Remote_Call_Interface;
 	
-	procedure Print (S: in String);
+	procedure Print (A: in Actions);
 	procedure Print (ID: in Integer; A: in Actions);
 	procedure Print (ID: in Integer; R: in Integer; C: in Integer);
 	

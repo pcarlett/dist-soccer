@@ -23,9 +23,9 @@ package body Event_Manager is
         Put_Line (" done.");
         loop
             select
-                accept Generate (S: in String) do
+                accept Generate (A: in Actions) do
                     Put_Line ("E_Mgr: Notif 1 received. Generating event.");
-                    E := Basic_Event.Summary.Create(S);
+                    E := Basic_Event.Summary.Create(A);
                 end Generate;
             or
                 accept Generate (ID: in Integer; A: in Actions) do

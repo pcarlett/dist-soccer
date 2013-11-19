@@ -11,7 +11,7 @@ package body Event_Generator is
 
     type Notification1 is
         record
-            S: String (1..17);
+            A: Actions;
         end record;
         
     type Notification2 is
@@ -51,16 +51,16 @@ package body Event_Generator is
 		E_Mgr: Event_Manager.E_Manager_Acc;		
     begin
         -- init array of notifications type 1: strings
-        Data1( 1) := (S => "Gioco iniziato   ");
-        Data1( 2) := (S => "Goal team rosso  ");
-        Data1( 3) := (S => "Goal team blu    ");
-        Data1( 4) := (S => "Fuorigioco blu   ");
-        Data1( 5) := (S => "Fuorigioco rosso ");
-        Data1( 6) := (S => "Fallo team blu   ");
-        Data1( 7) := (S => "Fallo team rosso ");
-        Data1( 8) := (S => "Palla rossa fuori");
-        Data1( 9) := (S => "Palla blu fuori  ");
-        Data1(10) := (S => "Gioco terminato  ");
+        Data1( 1) := (A => Ball_Out);
+        Data1( 2) := (A => Goal);
+        Data1( 3) := (A => Fault);
+        Data1( 4) := (A => Offside);
+        Data1( 5) := (A => Penalty);
+        Data1( 6) := (A => Ball_Out);
+        Data1( 7) := (A => Goal);
+        Data1( 8) := (A => Fault);
+        Data1( 9) := (A => Offside);
+        Data1(10) := (A => Penalty);
         
         -- init of array of notifications type 2: actions
         Data2( 1) := (ID => 15, A => Ball_Out);
@@ -99,7 +99,7 @@ package body Event_Generator is
 	  		Put_Line ("E_Gen generating new message type:" & Integer'Image(D1) & ".");
            	case D1 is
             	when 1 =>
-                  	E_Mgr.Generate (Data1(D2).S);
+                  	E_Mgr.Generate (Data1(D2).A);
               	when 2 =>
                 	E_Mgr.Generate (Data2(D2).ID, Data2(D2).A);
             	when 3 =>

@@ -9,7 +9,7 @@ package Event_Manager is
     task type E_Manager is
         -- entry Start (Ptr: in Event_Queuer.E_Queuer_Acc);
         entry Start;
-        entry Generate (S: in String);
+        entry Generate (A: in Actions);
         entry Generate (ID: in Integer; A: in Actions);
         entry Generate (ID: in Integer; R: in Integer; C: in Integer);
     end E_Manager;
