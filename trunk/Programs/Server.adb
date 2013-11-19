@@ -1,0 +1,33 @@
+--------------------------------------------------------------------------------
+-- Main Server: Main procedure that init server side tasks 
+--
+--------------------------------------------------------------------------------
+-- with PolyORB.Parameters;
+with Ada.Text_IO;
+with Event_Generator;
+with Event_Manager;
+with Queue;
+with Event_Display;
+procedure Server is
+	E_Gen: Event_Generator.E_Generator_Acc := new Event_Generator.E_Generator;
+	E_Mgr: Event_Manager.E_Manager_Acc := new Event_Manager.E_Manager;
+	------------------------------------------------------------------------
+	-- only for test type exchange
+	-- E_Dis: Event_Display.E_Display_Acc := new Event_Display.E_Display;
+	------------------------------------------------------------------------
+begin
+	-- init of manager and generator
+	E_Mgr.Start;
+	E_Gen.Start(E_Mgr);
+
+	------------------------------------------------------------------------
+	-- only for test type exchange
+	-- E_Dis.Start;
+	------------------------------------------------------------------------
+		
+	loop
+		Ada.Text_IO.Put ("*");
+		delay 1.0;
+	end loop;
+		
+end Server;
