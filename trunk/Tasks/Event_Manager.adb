@@ -4,7 +4,7 @@
 --------------------------------------------------------------------------------
 with Ada.Text_IO;		use Ada.Text_IO;
 with Queue;
--- with Stats;
+with Stats;
 with Basic_Event;
 with Basic_Event.Summary; 
 with Basic_Event.Partial;
@@ -13,12 +13,9 @@ package body Event_Manager is
 
     task body E_Manager is
         E: Basic_Event.Event_Ptr;
-		-- E_Que: Event_Queuer.E_Queuer_Acc;
     begin
-        -- accept Start (Ptr: in Event_Queuer.E_Queuer_Acc) do
         accept Start do
             Put ("Event Manager activating...");
-			-- E_Que := Ptr;
         end Start;
         Put_Line (" done.");
         loop
@@ -31,6 +28,7 @@ package body Event_Manager is
                 accept Generate (ID: in Integer; A: in Actions) do
                     Put_Line ("E_Mgr: Notif 2 received. Generating event.");
                     E := Basic_Event.Partial.Create(ID, A);
+					Stats.Update (ID, A);
                 end Generate;
             or
                 accept Generate (ID: in Integer; R: in Integer; C: in Integer) do

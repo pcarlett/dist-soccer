@@ -10,6 +10,7 @@ package Printer is
 	procedure Print (A: in Actions);
 	procedure Print (ID: in Integer; A: in Actions);
 	procedure Print (ID: in Integer; R: in Integer; C: in Integer);
+	procedure Print (G1, G2, F1, F2, Off1, Off2, Out1, Out2, P1, P2 : in Integer);
 	
 	pragma Asynchronous (Print);
 

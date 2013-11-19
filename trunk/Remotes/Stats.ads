@@ -5,14 +5,15 @@
 with Common_Types;	use Common_Types;
 package Stats is
 	
-	type Stat is
-		record
-			-- Goal, Fault, Offside, Ball_Out, Penalty
-			G1, G2, F1, F2, Off1, Off2, Out1, Out2, P1, P2 : Integer := 0; 
-	end record;
+	pragma Remote_Call_Interface;
+			
+	procedure Update (ID: in Integer; A: in Actions);
+	procedure Get_Stats (G1, G2, F1, F2, Off1, Off2, Out1, Out2, P1, P2 : out Integer);
 	
-	type Stat_Ptr is access all Stat;
+	pragma Asynchronous (Update);
 	
-	function Increment (ID: Integer; A: Actions) return Boolean;
-	
+private
+	Stat_Size : constant := 10;
+	subtype Stat_Range is Positive range 1..Stat_Size;
+	Stat : array (Stat_Range) of Integer; 
 end Stats;
