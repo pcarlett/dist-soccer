@@ -51,4 +51,4 @@ clean :
 	done
 	
 tar: clean
-	tar --exclude '.git' -zcvf ../archive/dist_soccer.tgz ../trunk
+	tar --exclude '.git' -zcvf ../archive/dist_soccer.tgz *

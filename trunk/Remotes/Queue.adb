@@ -12,18 +12,19 @@ package body Queue is
 	
 	protected body Protected_Queue is
 		entry Protected_Push (E_Ptr: in Basic_Event.Event_Ptr) 
-			when Length1 < Queue_Size1 and Length2 < Queue_Size2 is
+			when Length1 < Queue_Size and Length2 < Queue_Size is
 		begin
-			-- 1th queue push
-	        Data1(Tail1) := E_Ptr;
-	        Tail1 := Tail1 mod Queue_Size1 + 1;
+			-- queue push
+	        Data(Tail) := E_Ptr;
+	        Tail := Tail mod Queue_Size + 1;
+	        Tail1 := Tail1 mod Queue_Size + 1;
+	        Tail2 := Tail2 mod Queue_Size + 1;
 	        Length1 := Length1 + 1;
-			-- 2nd queue push
-	        Data2(Tail2) := E_Ptr;
-	        Tail2 := Tail2 mod Queue_Size2 + 1;
 	        Length2 := Length2 + 1;
 			Put_Line ("E_Que: event pushed in queue.");
 			Put_Line ("L1: " & Integer'Image(Length1) & " L2: " & Integer'Image(Length2));
+			Put_Line ("H1: " & Integer'Image(Head1) & " H2: " & Integer'Image(Head2));
+			Put_Line ("T1: " & Integer'Image(Tail1) & " T2: " & Integer'Image(Tail2));
 		end Protected_Push;
 		
 		entry Protected_Pop (Id: in Integer; E_Ptr: out Basic_Event.Event_Ptr) 
@@ -31,14 +32,14 @@ package body Queue is
 		begin
 			case Id is
 				when 1 => 
-					E_Ptr := Data1(Head1);
+					E_Ptr := Data(Head1);
 					Put_Line ("E_Que: event popped out from queue.");
-			        Head1 := Head1 mod Queue_Size1 + 1;
+			        Head1 := Head1 mod Queue_Size + 1;
 			        Length1 := Length1 - 1;
 				when 2 =>
-					E_Ptr := Data2(Head2);
+					E_Ptr := Data(Head2);
 					Put_Line ("E_Que: event popped out from queue.");
-			        Head2 := Head2 mod Queue_Size2 + 1;
+			        Head2 := Head2 mod Queue_Size + 1;
 			        Length2 := Length2 - 1;
 				when others =>
 					Put_Line ("E_Que: error in popping from queue.");
