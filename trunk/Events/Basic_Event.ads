@@ -12,7 +12,7 @@ package Basic_Event is
 	pragma Asynchronous (Event_Ptr);
 
 	function Create return Event_Ptr is abstract;
-    procedure Simulate(E: Event) is abstract;
+    procedure Simulate(Id: Integer; E: Event) is abstract;
 	
 private
     type Event is abstract tagged limited null record;

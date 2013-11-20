@@ -6,7 +6,7 @@ package Basic_Event.Complete is
     type Complete_Event is new Event with private;
 	
     function Create(ID: Integer; R: Integer; C: Integer) return Event_Ptr; 
-    procedure Simulate(E: in Complete_Event);
+    procedure Simulate(Id: in Integer; E: in Complete_Event);
 
 private
     type Complete_Ptr is access all Complete_Event; 

@@ -40,7 +40,7 @@ server:
 	@./bin/server_partition
 	
 client:
-	@./bin/client_partition
+	@./bin/client1_partition
 
 clean :
 	@-rm -rf dsa/ bin/
@@ -51,4 +51,4 @@ clean :
 	done
 	
 tar: clean
-	tar --exclude '.git' -zcvf ../archive/dist_soccer_v1.0.tgz ../trunk
+	tar --exclude '.git' -zcvf ../archive/dist_soccer.tgz ../trunk

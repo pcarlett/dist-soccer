@@ -3,7 +3,7 @@
 --
 --------------------------------------------------------------------------------
 with Ada.Text_IO;	use Ada.Text_IO;
-package body Printer is
+package body Printer2 is
 				
 	procedure Print (A: in Actions) is
 	begin
@@ -34,4 +34,4 @@ package body Printer is
 		Put_Line ("");
 	end Print;
 	
-end Printer;
+end Printer2;

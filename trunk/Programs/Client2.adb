@@ -4,15 +4,15 @@
 --------------------------------------------------------------------------------
 with Ada.Text_IO;
 with Event_Display;
-procedure Client is
+procedure Client2 is
 	E_Dis: Event_Display.E_Display_Acc := new Event_Display.E_Display;
-	
 begin
-	E_Dis.Start;
-		
+	-- init of display istance
+	E_Dis.Start (2);
+	-- init of main loop
 	loop
 		Ada.Text_IO.Put ("*");
 		delay 1.0;
 	end loop;
 		
-end Client;
+end Client2;

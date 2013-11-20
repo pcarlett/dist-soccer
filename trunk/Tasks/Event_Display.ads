@@ -8,7 +8,7 @@ with Queue;
 package Event_Display is
 
     task type E_Display is
-        entry Start;
+        entry Start (Id: in Integer);
         -- entry Display (E: in Basic_Event.Event);
         -- entry Display;
     end E_Display;
